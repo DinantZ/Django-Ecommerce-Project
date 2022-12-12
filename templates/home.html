@@ -2,25 +2,15 @@
 {% load static %}
 {% block content %}
 <!-- ========================= SECTION MAIN ========================= -->
-<section class="section-intro padding-y-sm">
-<div class="container">
-
-<div class="intro-banner-wrap">
-	<img src="{% static 'images/banners/1.jpg' %}" class="img-fluid rounded">
-</div>
-
-</div> <!-- container //  -->
-</section>
+<!-- ++++++++++++++++++++++++++IF I WANT A WHEEL+++++++++++++++++++++++++++++-->
 <!-- ========================= SECTION MAIN END// ========================= -->
-
-
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
 <div class="container">
 
 <header class="section-heading">
-	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
-	<h3 class="section-title">Popular products</h3>
+	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Виж всички</a>
+	<h3 class="section-title">Популярни продукти</h3>
 </header><!-- sect-heading -->
 
 	
@@ -31,7 +21,7 @@
 			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
 			<figcaption class="info-wrap">
 				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				<div class="price mt-1">$ {{ product.price }}</div> <!-- price-wrap.// -->
+				<div class="price mt-1">{{ product.price }} лв</div> <!-- price-wrap.// -->
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->
@@ -41,9 +31,6 @@
 </div><!-- container // -->
 </section>
 <!-- ========================= SECTION  END// ========================= -->
-
-
-
 
 </body>
 </html>
