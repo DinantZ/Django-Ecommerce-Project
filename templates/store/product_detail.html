@@ -18,29 +18,28 @@
     </article> <!-- gallery-wrap .end// -->
     </aside>
     <main class="col-md-6 border-left">
-        <form action="{% url 'add_cart' single_product.id %}" method="POST">
-            {% csrf_token %}
             <article class="content-body">
             <h2 class="title">{{single_product.product_name }}</h2>
             <div class="mb-3"> 
                 <var class="price h4">{{single_product.price}} лв</var> 
             </div>
                 <p>{{ single_product.description }}</p>
-            {% if single_product.stock <= 0 %}
+                {% if single_product.stock <= 0 %}
                                     <h5 class="text-danger">Изчерпано количество</h5>
                                     {% else %}
                         {% if in_cart %}
                         <a href="#" class="btn  btn-success"> <span class="text">Добавен в количката</span> <i class="fas fa-check"></i>  </a>
                         <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">Вижте количката</span> <i class="fas fa-eye"></i>  </a>
                         {% else %}
-                        <button type="submit" class="btn  btn-primary"> <span class="text">Добави в количката</span> <i class="fas fa-shopping-cart"></i>  </button>
+                        <a href="{% url 'add_cart' single_product.id %}" type="submit" class="btn  btn-primary"> <span class="text">Добави в количката</span> <i class="fas fa-shopping-cart"></i>  </a>
                         {% endif %}
                     {% endif %}
             </article> <!-- product-info-aside .// -->
-            </form>
           </main> <!-- col.// -->
      </div> <!-- row.// -->
    </div> <!-- card.// -->
+   <!--                                             {% csrf_token %}
+-->
     <!-- ============================ COMPONENT 1 END .// ================================= -->
     
     <br>

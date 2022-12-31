@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-conten padding-y" style="min-height:84vh">
+
+
+{% if request.GET.command == 'verification' %}
+<div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+    Благодарим ви, че се регистрирахте при нас. Изпратихме ви имейл за потвърждение на вашия имейл адрес [{{ request.GET.email }}]
+    <br><br>
+    Вече е потвърдено? <a href="{% url 'login' %}">Влез</a>
+</div>
+    
+{% else %}
+
+<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Влизане</h4>
+        {% include 'includes/alerts.html' %}
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+			    <input type="email" class="form-control" placeholder="Имейл адрес" name="email">
+            </div> <!-- form-group// -->
+
+            <div class="form-group">
+		        <input type="password" class="form-control" placeholder="Парола" name="password">
+            </div> <!-- form-group// -->
+
+            <div class="form-group">
+                <a href="{% url 'forgotPassword' %}" class="float-right">Забравена парола?</a>
+            </div> <!-- form-group form-check .// -->
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Влез </button>
+            </div> <!-- form-group// -->
+        </form>
+    </div> <!-- card-body.// -->
+</div> <!-- card .// -->
+
+<p class="text-center mt-4">Нямаш акаунт? <a href="{% url 'register' %}">Регистрирай се</a></p>
+<br><br>
+{% endif %}
+
+</section>
+{% endblock %}

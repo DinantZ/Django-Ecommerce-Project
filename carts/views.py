@@ -12,11 +12,6 @@ def _cart_id(request):
     return cart
 
 def add_cart(request, product_id):
-    
-    if request.method == "Post":
-        for item in request.POST:
-            key = item
-
     product = Product.objects.get(id=product_id) #get the product
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request)) # get the cart using the cart_id present in the session

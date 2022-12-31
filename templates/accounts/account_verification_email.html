@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Здравейте {{user.first_name}}
+
+Моля, щракнете върху връзката по-долу, за да потвърдите регистрацията си.
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+Ако смятате, че не сте вие, моля игнорирайте този имейл.
+
+{% endautoescape %}

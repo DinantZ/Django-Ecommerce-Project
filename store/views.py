@@ -60,3 +60,11 @@ def search(request):
         'product_count': product_count,
     }
     return render(request, 'store/store.html', context)
+
+def sortView(request):
+    if request.method == "GET":
+        min_price = request.GET.get('min-price')
+        max_price = request.GET.get('max-price')
+        product = product.objects.filter(Q(price__gte=min_price) & Q(price__lte=max_price))
+
+    return render(request, 'store/store.html', {'product': product})
